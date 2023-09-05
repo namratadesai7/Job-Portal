@@ -1,4 +1,5 @@
 <?php
+//sdff
 include('dbcon.php');
 session_start();
 
@@ -47,8 +48,9 @@ if(isset($_POST['sta'])){
     $sta=$_POST['sta'];
     $status=$_POST['status'];
     $sr=$_POST['id'];
+    $date=$_POST['date'];
     
-    $sql="UPDATE CV SET Interview_status='$sta',Status='$status' WHERE Sr='$sr' ";
+    $sql="UPDATE CV SET Interview_status='$sta',Status='$status',Interview_date='$date' WHERE Sr='$sr' ";
     $run=sqlsrv_query($conn,$sql);
     }
 

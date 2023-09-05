@@ -20,6 +20,13 @@ $run=sqlsrv_query($conn,$sql);
     .status{
         border:none;
     }
+    .dd{
+    border: none; /* Remove the border */
+    outline: none; /* Remove the outline when focused */
+    appearance: none; /* Remove platform-specific styling (like the arrow in some browsers) */
+    background-color: transparent; 
+    /* Optionally make the background transparent */
+}
 </style>
 
 
@@ -123,7 +130,10 @@ $run=sqlsrv_query($conn,$sql);
                         </select>
                         
                         </td>
-                        <td> <?php echo $row['Interview_date']->format('d-m-y')    ?></td>
+                        <td > 
+                        <?php 
+                        $interviewDate = $row['Interview_date']->format('Y-m-d'); ?>
+                            <input type="date" name="date" class="dd" value="<?php echo $interviewDate?>"></td>
 
                         <td>
                             <select style="width:210px;" class="form-select status" name="status" >
@@ -153,14 +163,14 @@ $run=sqlsrv_query($conn,$sql);
     $('#cv').addClass('activeTab');
 
         $(document).on("click",".submit",function(){
-            var id = $(this).attr('id');
+            
             var sta = $(this).closest('tr').find('.intsta').val();
             var status= $(this).closest('tr').find('.status').val();
-     
+            var date=$(this).closest('tr').find('.date').val();
         $.ajax({
             url:'addcv_db.php',
             type:'post',
-            data:{sta:sta,id:id,status:status},
+            data:{sta:sta,id:id,status:status,date:date},
             success:function(data){
                  $('#intsta').val(data);
                  $('#status').val(data);

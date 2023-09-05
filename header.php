@@ -56,7 +56,7 @@ include('dbcon.php');
                  </a>
             </li>
             <li id="cv"><a href="cv.php">
-                <span class="icon"><i class="fa-solid fa-list-check"></i></span>
+                <span class="icon"><i class="fa-solid fa-file"></i></span>
                 <span class="title">CV's</span>
                  </a>
             </li>
